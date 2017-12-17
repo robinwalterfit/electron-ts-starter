@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "charset": "utf8",
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "outDir": "dist",
+        "paths": {
+            "*": [
+                "node_modules/*",
+                "src/types/*"
+            ]
+        },
+        "pretty": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "target": "es2015"
+    },
+    "formatCodeOptions": {
+        "indentSize": 4,
+        "tabSize": 4
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

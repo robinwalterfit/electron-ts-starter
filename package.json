@@ -1,0 +1,66 @@
+{
+    "author": "Robin Walter",
+    "description": "A starter project for electron with TypeScript",
+    "devDependencies": {
+        "@types/jest": "^19.2.2",
+        "@types/node": "^7.0.12",
+        "asar": "^0.14.0",
+        "electron": "^1.7.9",
+        "electron-installer-debian": "^0.7.1",
+        "electron-installer-dmg": "^0.1.2",
+        "electron-packager": "^8.1.0",
+        "electron-winstaller": "^2.4.1",
+        "jest": "^19.0.2",
+        "node-sass": "^4.5.2",
+        "shelljs": "^0.7.7",
+        "ts-jest": "^19.0.8",
+        "tslib": "^1.8.1",
+        "typescript": "^2.4.0"
+    },
+    "jest": {
+        "globals": {
+            "__TS_CONFIG__": "tsconfig.json"
+        },
+        "moduleFileExtensions": [
+            "ts",
+            "js"
+        ],
+        "testEnvironment": "node",
+        "testMatch": [
+            "**/test/**/*.test.(ts|js)"
+        ],
+        "transform": {
+            "^.+\\.(ts|tsx)$": "./node_modules/ts-jest/preprocessor.js"
+        }
+    },
+    "keywords": [
+        "css",
+        "electron",
+        "html",
+        "scss"
+    ],
+    "license": "MIT",
+    "main": "dist/main.js",
+    "name": "electron-ts-starter",
+    "productName": "Electron TypeScript Starter",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/robinwalterfit/electron-ts-starter.git"
+    },
+    "scripts": {
+        "build": "npm run build-sass && npm run build-ts && npm run copy-static-assets",
+        "build-sass": "node-sass src/assets/scss/style.scss dist/assets/css/style.css",
+        "build-ts": "tsc",
+        "copy-static-assets": "node copyStaticAssets.js",
+        "create-installer-debian": "npm run package-linux && electron-installer-debian --src release-builds/electron-ts-starter-linux-x64/ --arch amd64 --config debian.json",
+        "create-installer-mac": "npm run package-mac && electron-installer-dmg ./release-builds/Electron\\ TypeScript\\ Starter-darwin-x64/Electron\\ TypeScript\\ Starter.app electron-ts-starter --out=release-builds --overwrite --icon=dist/assets/icons/mac/icon.icns",
+        "create-installer-win": "npm run package-win && node installers/windows/createinstaller.js",
+        "electron": "electron .",
+        "package-linux": "npm run build && electron-packager . electron-ts-starter --overwrite --asar=true --platform=linux --arch=x64 --icon=dist/assets/icons/png/1024x1024.png --prune=true --out=release-builds",
+        "package-mac": "npm run build && electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=dist/assets/icons/mac/icon.icns --prune=true --out=release-builds",
+        "package-win": "npm run build && electron-packager . electron-ts-starter --overwrite --asar=true --platform=win32 --arch=ia32 --icon=dist/assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron TypeScript Starter\"",
+        "start": "npm run build && npm run electron",
+        "test": "jest --forceExit"
+    },
+    "version": "1.0.0"
+}
