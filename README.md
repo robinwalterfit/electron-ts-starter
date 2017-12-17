@@ -6,7 +6,7 @@ The electron-ts-starter repository can be used as a template to get started with
 
 These instructions will get you a copy of the project up and running on your local machine for development.
 
-**Note**: The `i18n` module is just non-well working sample
+**Note**: The `i18n` module is just a non-well working sample
 
 ### To Use
 
