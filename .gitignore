@@ -93,3 +93,4 @@ typings/
 
 dist/
 release-builds/
+package-lock.json
