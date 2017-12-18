@@ -19,7 +19,7 @@ import * as url from 'url'
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow: Electron.BrowserWindow | null = null
 
-const isDevMode = process.execPath.match( /[\\/]electron/ )
+const isDevMode = process.mainModule.filename.indexOf( 'app.asar' ) === -1
 
 const createWindow = async () => {
 
